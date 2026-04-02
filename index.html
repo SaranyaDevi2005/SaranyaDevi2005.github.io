@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saranya Devi S — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-50: #E6F1FB;
+      --blue-100: #B5D4F4;
+      --blue-400: #378ADD;
+      --blue-600: #185FA5;
+      --blue-800: #0C447C;
+      --blue-900: #042C53;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --bg: #fff;
+      --bg-secondary: #f7f8fa;
+      --border: #e4e7ec;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 1.75rem; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); font-family: 'Arial', sans-serif; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue-600); }
+
+    /* MAIN */
+    .port { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      background: var(--blue-50);
+      color: var(--blue-800);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      border: 0.5px solid var(--blue-100);
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 1.5rem;
+      font-family: 'Arial', sans-serif;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 9px 22px;
+      background: var(--blue-600);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--blue-800); }
+    .btn-outline {
+      padding: 9px 22px;
+      background: transparent;
+      color: var(--blue-600);
+      border: 0.5px solid var(--blue-400);
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--blue-50); }
+    .avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--blue-50);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 600;
+      color: var(--blue-600);
+      border: 2px solid var(--blue-100);
+      flex-shrink: 0;
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 3rem;
+    }
+    .stat-card {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+      border: 0.5px solid var(--border);
+    }
+    .stat-num { font-size: 22px; font-weight: 600; color: var(--blue-600); margin-bottom: 4px; }
+    .stat-label { font-size: 11px; color: var(--text-secondary); font-family: 'Arial', sans-serif; }
+
+    /* SECTION */
+    .section { margin-bottom: 3rem; }
+    .section-header {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 1.25rem;
+      padding-bottom: 8px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* SKILLS */
+    .skills-group { margin-bottom: 14px; }
+    .skills-group-label { font-size: 11px; color: var(--text-secondary); font-family: 'Arial', sans-serif; margin-bottom: 8px; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill {
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+    }
+    .skill-pill.hl { background: var(--blue-50); color: var(--blue-600); border-color: var(--blue-100); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .proj-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .proj-card:hover { border-color: var(--blue-400); box-shadow: 0 2px 16px rgba(24,95,165,0.07); }
+    .proj-tag {
+      font-size: 11px;
+      font-family: 'Arial', sans-serif;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+    .t-ml { background: #EAF3DE; color: #3B6D11; }
+    .t-web { background: #FAEEDA; color: #854F0B; }
+    .t-ai { background: #EEEDFE; color: #3C3489; }
+    .t-nlp { background: #E1F5EE; color: #0F6E56; }
+    .t-sys { background: #FAC775; color: #633806; }
+    .proj-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .proj-desc { font-size: 12px; font-family: 'Arial', sans-serif; color: var(--text-secondary); line-height: 1.65; margin-bottom: 10px; }
+    .proj-acc { font-size: 11px; font-weight: 600; color: #3B6D11; font-family: 'Arial', sans-serif; margin-bottom: 8px; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .github-link { font-size: 11px; font-family: 'Arial', sans-serif; color: var(--blue-600); display: flex; align-items: center; gap: 4px; }
+    .github-link:hover { text-decoration: underline; }
+    .stack-pill { font-size: 11px; font-family: 'Arial', sans-serif; padding: 2px 9px; border-radius: 20px; background: var(--blue-50); color: var(--blue-800); }
+
+    /* EXPERIENCE */
+    .exp-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
+    .exp-role { font-size: 15px; font-weight: 600; }
+    .exp-date { font-size: 12px; font-family: 'Arial', sans-serif; color: var(--text-secondary); }
+    .exp-company { font-size: 13px; font-family: 'Arial', sans-serif; color: var(--blue-600); margin-bottom: 10px; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li { font-size: 13px; font-family: 'Arial', sans-serif; color: var(--text-secondary); line-height: 1.65; padding: 3px 0 3px 16px; position: relative; }
+    .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--border); }
+
+    /* ACHIEVEMENTS */
+    .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .ach-card { background: var(--bg-secondary); border-radius: 10px; padding: 1rem; border: 0.5px solid var(--border); }
+    .ach-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .ach-sub { font-size: 12px; font-family: 'Arial', sans-serif; color: var(--text-secondary); line-height: 1.5; }
+
+    /* CONTACT */
+    .contact-strip {
+      background: var(--blue-50);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border: 0.5px solid var(--blue-100);
+    }
+    .contact-strip-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .contact-strip-sub { font-size: 13px; font-family: 'Arial', sans-serif; color: var(--text-secondary); }
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .contact-link { font-size: 13px; font-family: 'Arial', sans-serif; color: var(--blue-600); }
+    .contact-link:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      color: var(--text-secondary);
+      border-top: 0.5px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar { display: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Saranya Devi S</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="port">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="hero-tag">M.Sc. Decision &amp; Computing Sciences &middot; CGPA 8.78</span>
+      <h1>Developer &middot; ML Engineer &middot; AI Enthusiast</h1>
+      <p class="hero-sub">Passionate about building intelligent systems, scalable web apps, and data-driven solutions. Experienced in full-stack development, machine learning, and NLP. Currently pursuing M.Sc. at CIT Coimbatore.</p>
+      <div class="hero-btns">
+        <a href="#projects"><button class="btn-primary">View Projects</button></a>
+        <a href="#contact"><button class="btn-outline">Get in Touch</button></a>
+      </div>
+    </div>
+    <div class="avatar">SD</div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Projects built</div></div>
+    <div class="stat-card"><div class="stat-num">93.27%</div><div class="stat-label">Best model accuracy</div></div>
+    <div class="stat-card"><div class="stat-num">8.78</div><div class="stat-label">CGPA (7th sem)</div></div>
+    <div class="stat-card"><div class="stat-num">1st</div><div class="stat-label">Smart India Hackathon</div></div>
+  </div>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-header">Skills &amp; Technologies</div>
+    <div class="skills-group">
+      <div class="skills-group-label">AI / Machine Learning</div>
+      <div class="skills-grid">
+        <span class="skill-pill hl">TensorFlow</span>
+        <span class="skill-pill hl">PyTorch</span>
+        <span class="skill-pill hl">Scikit-learn</span>
+        <span class="skill-pill hl">LangChain</span>
+        <span class="skill-pill hl">OpenCV</span>
+        <span class="skill-pill hl">NLP</span>
+        <span class="skill-pill hl">Deep Learning</span>
+        <span class="skill-pill hl">LLMs</span>
+        <span class="skill-pill hl">SVM</span>
+        <span class="skill-pill hl">TF-IDF</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-label">Full-stack Development</div>
+      <div class="skills-grid">
+        <span class="skill-pill">React.js</span>
+        <span class="skill-pill">Node.js</span>
+        <span class="skill-pill">Django</span>
+        <span class="skill-pill">Flask</span>
+        <span class="skill-pill">Express.js</span>
+        <span class="skill-pill">MongoDB</span>
+        <span class="skill-pill">MySQL</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-label">Languages</div>
+      <div class="skills-grid">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">HTML</span>
+        <span class="skill-pill">CSS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-header">Featured Projects</div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <span class="proj-tag t-ml">Machine Learning</span>
+        <div class="proj-title">CyberSentinel — Anomaly Detection</div>
+        <div class="proj-desc">Real-time anomaly detection for network security using ensemble ML algorithms including Random Forest and XGBoost with hyperparameter tuning to reduce false positives.</div>
+        <div class="proj-acc">93.27% accuracy</div>
+        <div class="proj-footer">
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">Random Forest</span>
+            <span class="stack-pill">XGBoost</span>
+          </div>
+          <a class="github-link" href="https://github.com/SaranyaDevi2005/real-time-anomaly-detection" target="_blank">&#128279; GitHub</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag t-ai">AI / Vision</span>
+        <div class="proj-title">RetinaScope — Eye Disease Diagnostics</div>
+        <div class="proj-desc">AI-powered ophthalmic diagnostic web app comparing ResNet-50 and EfficientNet. Includes a RAG pipeline with LLM support and multilingual voice alerts.</div>
+        <div class="proj-footer">
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">PyTorch</span>
+            <span class="stack-pill">Streamlit</span>
+            <span class="stack-pill">LangChain</span>
+          </div>
+          <a class="github-link" href="https://github.com/SaranyaDevi2005/RetinaAI-app" target="_blank">&#128279; GitHub</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag t-nlp">NLP</span>
+        <div class="proj-title">VoiceVibes — Emotion Detection</div>
+        <div class="proj-desc">NLP-based emotion detection system using SVM to classify emotions from speech transcripts. Features semantic and syntactic analysis with TF-IDF for feature extraction.</div>
+        <div class="proj-footer">
+          <div class="proj-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">SVM</span>
+            <span class="stack-pill">TF-IDF</span>
+            <span class="stack-pill">NLP</span>
+          </div>
+          <a class="github-link" href="https://github.com/SaranyaDevi2005/VoiceVibes-EmotionDetection" target="_blank">&#128279; GitHub</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag t-sys">System</span>
+        <div class="proj-title">CampusConnect — Placement System</div>
+        <div class="proj-desc">Placement management system with interactive dashboards for real-time analytics. Role-based modules for students, companies, and admins enabling job tracking and performance insights.</div>
+        <div class="proj-footer">
+          <div class="proj-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">Node.js</span>
+            <span class="stack-pill">MySQL</span>
+            <span class="stack-pill">Dashboard</span>
+          </div>
+          <a class="github-link" href="https://github.com/SaranyaDevi2005/CampusConnect" target="_blank">&#128279; GitHub</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag t-web">Full Stack</span>
+        <div class="proj-title">StayHub — Airbnb Clone</div>
+        <div class="proj-desc">Full-stack rental platform with property listings, booking management, JWT authentication, RESTful APIs, and a responsive UI.</div>
+        <div class="proj-footer">
+          <div class="proj-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">Node.js</span>
+            <span class="stack-pill">Express</span>
+            <span class="stack-pill">Context API</span>
+          </div>
+          <a class="github-link" href="https://github.com/SaranyaDevi2005/stayhub-clone" target="_blank">&#128279; GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-header">Professional Experience</div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Remote Sensing Intern</div>
+          <div class="exp-company">Satyukt Analytics Pvt Ltd, Bangalore</div>
+        </div>
+        <div class="exp-date">Jun 2025 – Nov 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Built an end-to-end soil-moisture estimation pipeline for watershed-level agricultural monitoring in Karnataka using geospatial analysis, ML, and AI.</li>
+        <li>Provided real-time soil moisture insights and AI-driven farm-level irrigation recommendations for informed decision-making.</li>
+        <li>Supported the REWARD initiative with actionable analytics promoting precision irrigation and climate-resilient agriculture.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section">
+    <div class="section-header">Achievements &amp; Certifications</div>
+    <div class="ach-grid">
+      <div class="ach-card"><div class="ach-title">Smart India Hackathon 2024</div><div class="ach-sub">First Place — CIT</div></div>
+      <div class="ach-card"><div class="ach-title">Execute 4.0</div><div class="ach-sub">Delhi Technological University Finalist</div></div>
+      <div class="ach-card"><div class="ach-title">Research Publication</div><div class="ach-sub">Anomaly Detection in Network Security — ICICCT Conference</div></div>
+      <div class="ach-card"><div class="ach-title">Lean Six Sigma Yellow Belt</div><div class="ach-sub">Process improvement &amp; waste reduction</div></div>
+      <div class="ach-card"><div class="ach-title">Maiyyam Certification</div><div class="ach-sub">Power BI, Tableau, UI/UX Design</div></div>
+      <div class="ach-card"><div class="ach-title">0 to 1 Hackathon</div><div class="ach-sub">IIITD, Delhi Finalist</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-header">Get in Touch</div>
+    <div class="contact-strip">
+      <div>
+        <div class="contact-strip-title">Let's build something together</div>
+        <div class="contact-strip-sub">Open to internships, collaborations, and full-time roles.</div>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#15667467747b6c747170637c2c2221557278747c793b767a78"><span class="__cf_email__" data-cfemail="f4879586959a8d959091829dcdc3c0b49399959d98da979b99">[email&#160;protected]</span></a>
+        <a class="contact-link" href="https://github.com/SaranyaDevi2005" target="_blank">GitHub</a>
+        <a class="contact-link" href="https://linkedin.com/in/saranya-devi2005" target="_blank">LinkedIn</a>
+        <a class="contact-link" href="tel:6381379974">638137
